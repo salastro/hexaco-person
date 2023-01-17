@@ -1,6 +1,47 @@
-""" Model from https://hexaco.org/hexaco-inventory. """
+""" Statstical data and model's details from
+https://hexaco.org/hexaco-inventory. """
 
-message = """*HEXACO-PI-R 100*\n\nb = back, 1 = strongly disagree, 2 = disagree, 3 = neutral, 4 = agree, 5 = strongly agree\n"""
+stats = {
+    'h': {
+        'domain': 'Honesty',
+        'mean': 3.19,
+        'stdev': 0.62,
+        'color': 'orange',
+    },
+    'e': {
+        'domain': 'Emotionality',
+        'mean': 3.43,
+        'stdev': 0.62,
+        'color': 'green',
+    },
+    'x': {
+        'domain': 'Extraversion',
+        'mean': 3.50,
+        'stdev': 0.57,
+        'color': 'blue',
+    },
+    'a': {
+        'domain': 'Agreeableness',
+        'mean': 2.94,
+        'stdev': 0.58,
+        'color': 'red',
+    },
+    'c': {
+        'domain': 'Conscientiousness',
+        'mean': 3.44,
+        'stdev': 0.56,
+        'color': 'grey',
+    },
+    'o': {
+        'domain': 'Openness',
+        'mean': 3.41,
+        'stdev': 0.60,
+        'color': 'violet',
+    },
+}
+
+start_message = """*HEXACO-PI-R 100*\n\nb = back, 1 = strongly disagree, 2 = disagree, 3 = neutral, 4 = agree, 5 = strongly agree\n"""
+end_message = """\nYou finished the personality survey.\nName your output files!\n"""
 
 questions = {
     1   : "I would be quite bored by a visit to an art gallery.",

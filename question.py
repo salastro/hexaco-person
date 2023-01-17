@@ -46,8 +46,8 @@ def domains_scores(domains_questions: dict, answers: dict):
         scores[domain] = sum(single_domain_scores)/len(single_domain_scores)
     return scores
 
-def save_as_csv(ununindexd_dictionary: dict, filename: str):
-    df = pd.DataFrame(ununindexd_dictionary, index= [0])
+def save_as_csv(unindexd_dictionary: dict, filename: str):
+    df = pd.DataFrame(unindexd_dictionary, index= [0])
     df.to_csv (rf"{filename}.csv")
 
 def main():

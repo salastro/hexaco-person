@@ -10,7 +10,7 @@ data = pd.read_csv(
 ).squeeze("rows").to_dict()
 
 """ Data from https://hexaco.org/hexaco-inventory. """
-hexaco = {
+stats = {
     'h': {
         'domain': 'Honesty',
         'mean': 3.19,
@@ -55,12 +55,12 @@ score_range = np.arange(1, 5, 0.01)
 i = 0
 j = 0
 
-for key in hexaco:
+for key in stats:
 
-    mean = hexaco[key]['mean']
-    stdev = hexaco[key]['stdev']
-    color = hexaco[key]['color']
-    domain = hexaco[key]['domain']
+    mean = stats[key]['mean']
+    stdev = stats[key]['stdev']
+    color = stats[key]['color']
+    domain = stats[key]['domain']
     score = data[key]
 
     if j > 2:

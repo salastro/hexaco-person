@@ -3,8 +3,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.stats import norm
 
+filename = input("CSV file: ")
 data = pd.read_csv(
-    'data.csv',
+    rf'{filename}.csv',
     header=None,
     index_col=0,
 ).squeeze("columns").to_dict()

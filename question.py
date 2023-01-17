@@ -45,8 +45,8 @@ def domains_scores(domains_questions: dict, answers: dict):
         scores[domain] = sum(single_domain_scores)/len(single_domain_scores)
     return scores
 
-def save_as_csv(scores: dict, filename: str):
-    df = pd.DataFrame(scores, index= [0])
+def save_as_csv(ununindexd_dictionary: dict, filename: str):
+    df = pd.DataFrame(ununindexd_dictionary, index= [0])
     df.to_csv (rf"{filename}.csv")
 
 def main():
@@ -176,11 +176,13 @@ def main():
 
     print(start_message)
     answers = ask(questions)
-    answers = reverse(reversal, answers)
-    scores = domains_scores(domains_questions, answers)
+    reversed_answers = reverse(reversal, answers)
+    scores = domains_scores(domains_questions, reversed_answers)
     print(end_message)
-    filename = input("Output file name: ")
-    save_as_csv(scores, filename)
+    ans_filename = input("Answers file name: ")
+    res_filename = input("Results file name: ")
+    save_as_csv(answers, ans_filename)
+    save_as_csv(scores, res_filename)
 
 if __name__ == "__main__":
     main()

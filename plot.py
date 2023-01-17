@@ -9,8 +9,6 @@ data = pd.read_csv(
     index_col=0,
 ).squeeze("rows").to_dict()
 
-print(data)
-
 """ Data from https://hexaco.org/hexaco-inventory. """
 hexaco = {
     'h': {

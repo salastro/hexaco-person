@@ -46,8 +46,8 @@ def domains_scores(domains_questions: dict, answers: dict):
     return scores
 
 def save_as_csv(scores: dict, filename: str):
-    df = pd.DataFrame(scores, index= [0]).transpose()
-    df.to_csv (rf"{filename}.csv", header = False)
+    df = pd.DataFrame(scores, index= [0])
+    df.to_csv (rf"{filename}.csv")
 
 def main():
     """TODO: Docstring for main.

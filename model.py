@@ -3,37 +3,37 @@ https://hexaco.org/hexaco-inventory. """
 
 stats = {
     'h': {
-        'domain': 'Honesty',
+        'name': 'Honesty',
         'mean': 3.19,
         'stdev': 0.62,
         'color': 'orange',
     },
     'e': {
-        'domain': 'Emotionality',
+        'name': 'Emotionality',
         'mean': 3.43,
         'stdev': 0.62,
         'color': 'green',
     },
     'x': {
-        'domain': 'Extraversion',
+        'name': 'Extraversion',
         'mean': 3.50,
         'stdev': 0.57,
         'color': 'blue',
     },
     'a': {
-        'domain': 'Agreeableness',
+        'name': 'Agreeableness',
         'mean': 2.94,
         'stdev': 0.58,
         'color': 'red',
     },
     'c': {
-        'domain': 'Conscientiousness',
+        'name': 'Conscientiousness',
         'mean': 3.44,
         'stdev': 0.56,
         'color': 'grey',
     },
     'o': {
-        'domain': 'Openness',
+        'name': 'Openness',
         'mean': 3.41,
         'stdev': 0.60,
         'color': 'violet',
@@ -41,9 +41,9 @@ stats = {
 }
 
 start_message = """*HEXACO-PI-R 100*\n\nb = back, 1 = strongly disagree, 2 = disagree, 3 = neutral, 4 = agree, 5 = strongly agree\n"""
-end_message = """\nYou finished the personality survey.\nName your output files!\n"""
+end_message = """\nYou finished the personality survey!\n"""
 
-questions = {
+questions100 = {
     1   : "I would be quite bored by a visit to an art gallery.",
     2   : "I clean my office or home quite frequently.",
     3   : "I rarely hold a grudge, even against people who have badly wronged me.",

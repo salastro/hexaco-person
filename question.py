@@ -1,5 +1,7 @@
+"""Take the 100 HEXACO-PI-R personality test."""
+import argparse
 import pandas as pd
-from model import start_message, end_message, questions, reversal, domains_questions
+from model import start_message, end_message, questions100, reversal, domains_questions
 
 def ask(questions: dict):
     """TODO: Docstring for ask.
@@ -48,7 +50,7 @@ def domains_scores(domains_questions: dict, answers: dict):
 
 def save_as_csv(unindexd_dictionary: dict, filename: str):
     df = pd.DataFrame(unindexd_dictionary, index= [0])
-    df.to_csv (rf"{filename}.csv")
+    df.to_csv(filename)
 
 def main():
     """TODO: Docstring for main.
@@ -56,15 +58,30 @@ def main():
 
     """
 
+    parser = argparse.ArgumentParser(
+        prog = 'python3 question.py',
+        description = 'Take the 100 HEXACO-PI-R personality test.',
+    )
+
+    parser.add_argument('answers_file', help='file to which output answers')
+    parser.add_argument('results_file', help='file to which output results')
+
+    args = parser.parse_args()
+
+    answers_file = args.answers_file
+    results_file = args.results_file
+
     print(start_message)
-    answers = ask(questions)
+
+    answers = ask(questions100)
     reversed_answers = reverse(reversal, answers)
     scores = domains_scores(domains_questions, reversed_answers)
+
     print(end_message)
-    ans_filename = input("Answers file name: ")
-    res_filename = input("Results file name: ")
-    save_as_csv(answers, ans_filename)
-    save_as_csv(scores, res_filename)
+
+    save_as_csv(answers, answers_file)
+    save_as_csv(scores,  results_file)
+
 
 if __name__ == "__main__":
     main()

@@ -38,8 +38,8 @@ for key in stats:
         ha='left', va='center',
     )
     ax[i,j].annotate(
-        'You', xy=(score, norm.pdf(score, loc=mean, scale=stdev)),
-        xytext=(score, norm.pdf(score, loc=mean, scale=stdev) + 0.1 ),
+        'You', xy=(score, norm.pdf(score, mean, stdev)),
+        xytext=(score, norm.pdf(score, mean, stdev) + 0.1 ),
         arrowprops=dict(facecolor='black'),
         horizontalalignment='center', verticalalignment='top',
     )

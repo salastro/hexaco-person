@@ -1,12 +1,14 @@
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-from scipy.stats import norm
+"""Plot HEXACO personality test on normal distribution."""
 from model import stats
+from scipy.stats import norm
+from sys import argv
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
 
-filename = input("CSV file: ")
+filename = argv[1]
 data = pd.read_csv(
-    rf'{filename}.csv',
+    filename,
     index_col=0,
 ).squeeze("rows").to_dict()
 
@@ -16,12 +18,12 @@ score_range = np.arange(1, 5, 0.01)
 i = 0
 j = 0
 
-for key in stats:
+for key, value in stats.items():
 
-    mean = stats[key]['mean']
-    stdev = stats[key]['stdev']
-    color = stats[key]['color']
-    domain = stats[key]['domain']
+    mean = value['mean']
+    stdev = value['stdev']
+    color = value['color']
+    domain = value['domain']
     score = data[key]
 
     if j > 2:

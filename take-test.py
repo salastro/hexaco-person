@@ -1,17 +1,15 @@
-"""Take the 100 HEXACO-PI-R personality test."""
+"""Take the 100 HEXACO-PI-R test."""
 import argparse
 import pandas as pd
-from model import start_message, end_message, questions100, reversal, domains_questions
+from model import start_message, end_message, questions100
 
 def ask(questions: dict):
     """TODO: Docstring for ask.
 
-    :message: TODO
     :questions: TODO
     :returns: TODO
 
     """
-
     answers = {}
     i = 1
     while i <= len(questions):
@@ -33,55 +31,33 @@ def ask(questions: dict):
                 continue
         answers[i] = ans
         i += 1
-
     return answers
-
-def reverse(reversal: list, answers: dict):
-    for i in reversal:
-        answers[i] = 6-answers[i]
-    return answers
-
-def domains_scores(domains_questions: dict, answers: dict):
-    scores = {}
-    for domain in domains_questions:
-        single_domain_scores = [answers[i] for i in domains_questions[domain]]
-        scores[domain] = sum(single_domain_scores)/len(single_domain_scores)
-    return scores
 
 def save_as_csv(unindexd_dictionary: dict, filename: str):
+    """TODO: Docstring for save_as_csv.
+    :unindexd_dictionary: TODO
+    :filename: TODO
+    :returns: TODO
+
+    """
     df = pd.DataFrame(unindexd_dictionary, index= [0])
     df.to_csv(filename)
 
 def main():
     """TODO: Docstring for main.
-    :returns: TODO
 
     """
-
     parser = argparse.ArgumentParser(
-        prog = 'python3 question.py',
-        description = 'Take the 100 HEXACO-PI-R personality test.',
+        prog = "python3 take-test.py",
+        description = "Take the 100 HEXACO-PI-R test.",
     )
-
-    parser.add_argument('answers_file', help='file to which output answers')
-    parser.add_argument('results_file', help='file to which output results')
-
+    parser.add_argument("answers_file", help="file to which output answers")
     args = parser.parse_args()
-
     answers_file = args.answers_file
-    results_file = args.results_file
-
     print(start_message)
-
     answers = ask(questions100)
-    reversed_answers = reverse(reversal, answers)
-    scores = domains_scores(domains_questions, reversed_answers)
-
     print(end_message)
-
     save_as_csv(answers, answers_file)
-    save_as_csv(scores,  results_file)
-
 
 if __name__ == "__main__":
     main()

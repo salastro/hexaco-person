@@ -6,11 +6,24 @@ import pandas as pd
 from model import stats
 from scipy.stats import norm
 
+def max_window():
+    """Get matplotlib backend and maximize window accordingly."""
+    plot_backend = plt.get_backend()
+    mng = plt.get_current_fig_manager()
+    if plot_backend == 'TkAgg':
+        mng.resize(*mng.window.maxsize())
+    elif plot_backend == 'wxAgg':
+        mng.frame.Maximize(True)
+    elif plot_backend == 'Qt4Agg':
+        mng.window.showMaximized()
+
 def domain_plot(ax, score_range, score, domain):
     """TODO: Docstring for domain_plot.
 
-    :arg1: TODO
-    :returns: TODO
+    :ax: TODO
+    :score_range: TODO
+    :score: TODO
+    :domain: TODO
 
     """
 
@@ -54,6 +67,7 @@ def main():
         index_col=0,
     ).squeeze("rows").to_dict()
 
+    plt.style.use('fivethirtyeight')
     _, ax = plt.subplots(2, 3)
     score_range = np.arange(1, 5, 0.01)
 
@@ -70,6 +84,7 @@ def main():
 
         j += 1
 
+    max_window()
     plt.show()
 
 if __name__ == "__main__":

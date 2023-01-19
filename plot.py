@@ -48,6 +48,18 @@ def domain_plot(ax, score_range, score, domain):
         horizontalalignment='center', verticalalignment='top',
     )
 
+    ax.vlines(
+        norm.ppf(0.1, mean, stdev),
+        0, norm.pdf(mean, mean, stdev),
+        color='black', linestyles='dotted',
+        label='10th percentile',
+    )
+    ax.vlines(
+        norm.ppf(0.9, mean, stdev),
+        0, norm.pdf(mean, mean, stdev),
+        color='black', linestyles='dotted',
+        label='90th percentile',
+    )
 
 def main():
     """TODO: Docstring for main.
@@ -68,7 +80,7 @@ def main():
     ).squeeze("rows").to_dict()
 
     plt.style.use('fivethirtyeight')
-    _, ax = plt.subplots(2, 3)
+    fig, ax = plt.subplots(2, 3)
     score_range = np.arange(1, 5, 0.01)
 
     i = 0
@@ -85,6 +97,7 @@ def main():
         j += 1
 
     max_window()
+    # plt.tight_layout()
     plt.show()
 
 if __name__ == "__main__":

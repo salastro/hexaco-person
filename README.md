@@ -42,6 +42,8 @@ helpful step towards more advanced creations of programmatic creativity.
 
 `python3 plot.py /path/to/results.csv`
 
+![example figure](imgs/fig.png)
+
 ## References
 
 Lee, K., & Ashton, M. C. (2012). *The H factor of personality*. Wilfrid Laurier University Press.

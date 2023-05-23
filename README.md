@@ -39,9 +39,9 @@ helpful step towards more advanced creations of programmatic creativity.
 ```
 git clone https://github.com/salastro/hexaco-person.git
 cd hexaco-person
-python3 take-test.py /path/to/answers.csv
-python3 calculate-results.py /path/to/answers.csv /path/to/results.csv
-python3 plot.py /path/to/results.csv
+python3 src/take-test.py /path/to/answers.csv
+python3 src/calculate-results.py /path/to/answers.csv /path/to/results.csv
+python3 src/plot.py /path/to/results.csv
 ```
 
 ![example figure](imgs/fig.png)
